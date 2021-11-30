@@ -11,26 +11,32 @@ class App extends React.Component {
 			<div>
 				<h1>GITHUB, HUB</h1>
 				<form>
-					<button>Github Handle</button>
-					<input />
+					<input placeholder='Github Handle' />
+					<button>Search</button>
 				</form>
-				<div className='profile'>
+
+				<div id='profile'>
 					{this.state.profilePic.map((profileImage) => {
 						return <img width='250' src={profileImage} />;
 					})}
-					<h2>Jon Em</h2>
-					<h4>(full-stack programmer)</h4>
+					<a target='_blank' href='https://github.com/Jmz0127'>
+						<h3>Jon Mezz</h3>
+					</a>
+					<p>(Jmz0127)</p>
+					<p>Total Repos: 42</p>
+					<p>Total Followers: 22</p>
 				</div>
-				<div>
+
+				<div id='followers'>
 					<h2>Followers:</h2>
-				</div>
-				<div className='follower-grid'>
-					{this.state.followerImages.map((followerImage) => {
-						return <img width='150' src={followerImage} />;
-					})}
-					{this.state.followerNames.map((followerName) => {
-						return <h3>{followerName}</h3>;
-					})}
+					<div className='follower'>
+						{this.state.followerImages.map((followerImage) => {
+							return <img width='150' src={followerImage} />;
+						})}
+						{this.state.followerNames.map((followerName) => {
+							return <p>{followerName}</p>;
+						})}
+					</div>
 				</div>
 			</div>
 		);
