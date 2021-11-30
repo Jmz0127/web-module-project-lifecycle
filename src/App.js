@@ -1,6 +1,11 @@
 import React from 'react';
 
 class App extends React.Component {
+	state = {
+		followerImages: ['https://avatars.githubusercontent.com/u/31264591?v=4', 'https://avatars.githubusercontent.com/u/90978408?v=4', 'https://avatars.githubusercontent.com/u/89855627?v=4'],
+		followerNames: ['FftyShadesofCode', 'SafiaOmar', 'Darla-Young'],
+		profilePic: ['https://avatars.githubusercontent.com/u/45055471?v=4']
+	};
 	render() {
 		return (
 			<div>
@@ -9,27 +14,23 @@ class App extends React.Component {
 					<button>Github Handle</button>
 					<input />
 				</form>
-				<div class='profile'>
-					<img src='https://randomuser.me/api/portraits/men/40.jpg' />
+				<div className='profile'>
+					{this.state.profilePic.map((profileImage) => {
+						return <img width='250' src={profileImage} />;
+					})}
 					<h2>Jon Em</h2>
 					<h4>(full-stack programmer)</h4>
 				</div>
 				<div>
 					<h2>Followers:</h2>
 				</div>
-				<div class='follower-grid'>
-					<div>
-						<img src='https://randomuser.me/api/portraits/men/41.jpg' />
-						<h4>Willionaire</h4>
-					</div>
-					<div>
-						<img src='https://randomuser.me/api/portraits/women/47.jpg' />
-						<h4>Laur Jo</h4>
-					</div>
-					<div>
-						<img src='https://randomuser.me/api/portraits/women/90.jpg' />
-						<h4>Hannah Mezzadri</h4>
-					</div>
+				<div className='follower-grid'>
+					{this.state.followerImages.map((followerImage) => {
+						return <img width='150' src={followerImage} />;
+					})}
+					{this.state.followerNames.map((followerName) => {
+						return <h3>{followerName}</h3>;
+					})}
 				</div>
 			</div>
 		);
