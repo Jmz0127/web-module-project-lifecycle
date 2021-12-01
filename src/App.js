@@ -1,35 +1,22 @@
 import React from 'react';
 import User from './components/User';
 import FollowerList from './components/FollowerList';
+import axios from 'axios';
 class App extends React.Component {
 	state = {
-		currentUser: 'Jmz0127',
-		user: {
-			avatar_url: 'https://avatars.githubusercontent.com/u/45055471?v=4',
-			html_url: 'https://github.com/Jmz0127',
-			name: 'Jon_Em',
-			login: 'Jmz0127',
-			public_repos: 42,
-			followers: 22
-		},
-		followers: [
-			{
-				login: 'roxanneweber',
-				avatar_url: 'https://avatars.githubusercontent.com/u/89050736?v=4',
-				html_url: 'https://github.com/roxanneweber'
-			},
-			{
-				login: 'roxanneweber',
-				avatar_url: 'https://avatars.githubusercontent.com/u/89050736?v=4',
-				html_url: 'https://github.com/roxanneweber'
-			},
-			{
-				login: 'roxanneweber',
-				avatar_url: 'https://avatars.githubusercontent.com/u/89050736?v=4',
-				html_url: 'https://github.com/roxanneweber'
-			}
-		]
+		currentUser: 'Jmz0127', //ENTER A USER HERE!!
+		user: {},
+		followers: []
 	};
+
+	componentDidMount() {
+		axios.get(`https://api.github.com/users/${this.state.currentUser}`).then((resp) => {
+			this.setState({
+				...this.state,
+				user: resp.data
+			});
+		});
+	}
 	//finished add in state
 	render() {
 		return (
