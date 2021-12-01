@@ -8,7 +8,7 @@ class Follower extends React.Component {
 			<div className='follower'>
 				<img width='200px' src={follower.avatar_url} />
 				<a target='_blank' href={follower.html_url}>
-					roxanneweber
+					{follower.login}
 				</a>
 			</div>
 		);
