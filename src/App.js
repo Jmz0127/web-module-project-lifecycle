@@ -8,6 +8,7 @@ class App extends React.Component {
 		user: {},
 		followers: []
 	};
+	//finished add in state
 
 	componentDidMount() {
 		axios.get(`https://api.github.com/users/${this.state.currentUser}`).then((resp) => {
@@ -17,7 +18,18 @@ class App extends React.Component {
 			});
 		});
 	}
-	//finished add in state
+
+	componentDidUpdate(prevProps, prevState) {
+		if (this.state.user !== prevState.user) {
+			axios.get(`https://api.github.com/users/${this.state.currentUser}/followers`).then((resp) => {
+				this.setState({
+					...this.state,
+					followers: resp.data
+				});
+			});
+		}
+	}
+
 	render() {
 		return (
 			<div>
