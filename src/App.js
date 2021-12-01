@@ -30,6 +30,7 @@ class App extends React.Component {
 			}
 		]
 	};
+	//finished add in state
 	render() {
 		return (
 			<div>
